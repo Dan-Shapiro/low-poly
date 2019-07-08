@@ -1,0 +1,32 @@
+<h1>Listing Polies</h1>
+<%= link_to 'New Poly', new_poly_path %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Poly</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @polies.each do |poly| %>
+      <tr>
+        <td><%= poly.title %></td>
+        <td><%= image_tag poly.image.url(:thumb) %></td>
+        <td><%= poly.user.email %></td>
+        
+        <td><%= link_to 'Show', poly %></td>
+        
+        <% if poly.user == current_user %>
+          <td><%= link_to 'Edit', edit_poly_path(poly) %></td>
+          <td><%= link_to 'Destroy', poly, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

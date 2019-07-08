@@ -1,0 +1,14 @@
+<p>
+  <strong>Title:</strong>
+  <%= @poly.title %>
+  <br>
+  <%= image_tag @poly.image.url(:medium) %>
+</p>
+
+<%= link_to 'Back', polies_path %>
+<% if @poly.user == current_user %>
+  | <%= link_to 'Edit', edit_poly_path(@poly) %>
+  | <%= link_to 'Destroy', @poly, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
+
+
